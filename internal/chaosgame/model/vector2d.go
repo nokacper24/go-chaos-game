@@ -33,3 +33,11 @@ func (c *Vector2D) Sqrt() *Vector2D {
 
 	return &Vector2D{realPart, complexPart}
 }
+
+// Multiplies this vector by a scalar. Returns a pointer to a new vector.
+func (v *Vector2D) Multiply(scalar float64) *Vector2D {
+	return &Vector2D{
+		v.X * scalar,
+		v.Y * scalar,
+	}
+}
