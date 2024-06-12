@@ -1,6 +1,8 @@
 package game
 
 import (
+	"math"
+
 	"github.com/nokacper24/go-chaos-game/internal/chaosgame/model"
 	"github.com/nokacper24/go-chaos-game/internal/chaosgame/transform"
 )
@@ -39,7 +41,11 @@ func (c *chaosCanvas) PutPixelRaw(point model.Vector2D) {
 
 func (c *chaosCanvas) PutPixel(gamePoint model.Vector2D) {
 	point := c.transformToCanvas.Transform(&gamePoint)
-	c.Canvas[int(point.X)][int(point.Y)] = true
+	x := int(math.Round(point.X))
+	y := int(math.Round(point.Y))
+	if x < c.height && x >= 0 && y < c.width && y >= 0 {
+		c.Canvas[x][y] = true
+	}
 }
 
 func (c *chaosCanvas) Clear() {
