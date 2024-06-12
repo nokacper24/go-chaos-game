@@ -16,7 +16,7 @@ func NewChaosGame(description *ChaosGameDescription, width int, height int) *Cha
 	return &ChaosGame{
 		description:  description,
 		currentPoint: &model.Vector2D{X: 0, Y: 0},
-		Canvas:       NewChaosCanvas(width, height, model.Vector2D{X: 0, Y: 0}, model.Vector2D{X: 1, Y: 1}),
+		Canvas:       NewChaosCanvas(width, height, description.MinCoords, description.MaxCoords),
 	}
 }
 
